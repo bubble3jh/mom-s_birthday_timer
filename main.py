@@ -16,8 +16,7 @@ def resource_path(relative_path):
     return os.path.join(os.path.abspath("."), relative_path)
 
 ws = Tk()
-
-wd = PhotoImage(file = resource_path("./img/wood.png"))
+ws.iconphoto(False, PhotoImage(file=resource_path("./img/ico.png")))
 
 ws.title('권작가님 타이머')
 ws.geometry('480x630')
@@ -87,7 +86,6 @@ for i in range(12):
 counter = 0
 im_cnt=0
 running = False
-
 def counter_label():
     def count():
         if running:
@@ -112,7 +110,8 @@ def counter_label():
                 c.itemconfigure(msg_text, text="“사람이 가장 아름다운 순간은,\n 깊이 느끼고, 자유롭게 사랑하고, 거침없이 표현할 때다.”\n- K. 진호")
                         
             c.itemconfigure(img,image=imgfl[im_cnt%12])
-            
+            if(counter%60==0 and counter!=0):
+                counter+=1
             c.after(200, count)    
             im_cnt+=1
             if(im_cnt%5==0):
@@ -137,6 +136,13 @@ def StopTimer(event):
     c.itemconfigure(img_pl,image=play)
     c.itemconfigure(img_pa,image=npau)
 
+def openASMR(link):
+    url.place_forget()
+    c.itemconfigure(msg_text, text="“첫 줄을 쓰는 것은 어마어마한 공포이자 마술이며, \n기도인 동시에 수줍음이다.” \n- 존 스타인벡")
+    webbrowser.open(link)
+    c.itemconfigure(img_pa,image=npau)
+    url.set("ASMR")
+
 def musicbrowse(event):
     StopTimer(event)
     c.itemconfigure(img_pa,image="")
@@ -144,30 +150,15 @@ def musicbrowse(event):
     url.place(x=200,y=ico_y-15)
 
     if(a=='모닥불'):
-        url.place_forget()
-        c.itemconfigure(msg_text, text="“첫 줄을 쓰는 것은 어마어마한 공포이자 마술이며, \n기도인 동시에 수줍음이다.” \n- 존 스타인벡")
-        webbrowser.open("https://www.youtube.com/watch?v=UgHKb_7884o&ab_channel=CatTrumpet")
-        c.itemconfigure(img_pa,image=npau)
+        openASMR("https://www.youtube.com/watch?v=UgHKb_7884o&ab_channel=CatTrumpet")
     elif (a=='도서관'):
-        url.place_forget()
-        c.itemconfigure(msg_text, text="“첫 줄을 쓰는 것은 어마어마한 공포이자 마술이며, \n기도인 동시에 수줍음이다.” \n- 존 스타인벡")
-        webbrowser.open("https://www.youtube.com/watch?v=4vIQON2fDWM&ab_channel=TheGuildofAmbience")
-        c.itemconfigure(img_pa,image=npau)
+        openASMR("https://www.youtube.com/watch?v=4vIQON2fDWM&ab_channel=TheGuildofAmbience")
     elif(a=='빗소리'):
-        url.place_forget()
-        c.itemconfigure(msg_text, text="“첫 줄을 쓰는 것은 어마어마한 공포이자 마술이며, \n기도인 동시에 수줍음이다.” \n- 존 스타인벡")
-        webbrowser.open("https://www.youtube.com/watch?v=-N9rb2QDqrw&ab_channel=dreamysound")
-        c.itemconfigure(img_pa,image=npau)
+        openASMR("https://www.youtube.com/watch?v=-N9rb2QDqrw&ab_channel=dreamysound")
     elif(a=='클래식'):
-        url.place_forget()
-        c.itemconfigure(msg_text, text="“첫 줄을 쓰는 것은 어마어마한 공포이자 마술이며, \n기도인 동시에 수줍음이다.” \n- 존 스타인벡")
-        webbrowser.open("https://www.youtube.com/watch?v=38LMlhYiQzc&ab_channel=HALIDONMUSIC")
-        c.itemconfigure(img_pa,image=npau)
+        openASMR("https://www.youtube.com/watch?v=38LMlhYiQzc&ab_channel=HALIDONMUSIC")
     elif(a=='카페'):
-        url.place_forget()
-        c.itemconfigure(msg_text, text="“첫 줄을 쓰는 것은 어마어마한 공포이자 마술이며, \n기도인 동시에 수줍음이다.” \n- 존 스타인벡")
-        webbrowser.open("https://www.youtube.com/watch?v=R2sYaJyFETM&ab_channel=%EB%AA%BD%ED%82%A4%EB%B9%84%EC%A7%80%EC%97%A0MONKEYBGM")
-        c.itemconfigure(img_pa,image=npau)
+        openASMR("https://www.youtube.com/watch?v=R2sYaJyFETM&ab_channel=%EB%AA%BD%ED%82%A4%EB%B9%84%EC%A7%80%EC%97%A0MONKEYBGM")
     
     
 
